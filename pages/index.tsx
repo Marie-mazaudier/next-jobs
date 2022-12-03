@@ -18,7 +18,7 @@ interface HomeProps {
 }
 
 export default function Home(props: HomeProps) {
-  const [Movies, setMovies] = useState<Items[]>(props.films.Search);
+  const [Movies, setMovies] = useState(props.films.Search);
   /*  const [Type, setType] = useState(false);
   const [Year, setYear] = useState("");*/
   const [page, setPage] = useState(0);
