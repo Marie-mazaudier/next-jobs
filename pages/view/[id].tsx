@@ -1,11 +1,11 @@
 import { useRouter } from "next/router";
-import {GithubJob } from "../../lib/api";
+import {GithubFilm } from "../../lib/api";
 import { API_URL, options } from "../../lib/api";
 import { useEffect } from "react";
 import { Layout } from "../../components/layout";
 import { JobDescription } from "../../components/job/job-description";
 
-export interface GithubFilm {
+/*export interface GithubFilm {
   Title:      string;
   Year:       string;
   Genre:      string;
@@ -13,10 +13,10 @@ export interface GithubFilm {
   Country:    string;
   Poster:     string;
   Production: string;
-}
+}*/
 
 interface FilmProps {
-movie: GithubFilm[],
+movie: GithubFilm,
 redirect:boolean,
 
 }
@@ -28,10 +28,11 @@ export const Film : React.FC<FilmProps> =({movie, redirect}) =>{
           router.push("/404");
         }
       }, []);
-      console.log(movie.Language)
-      const title = movie.Title
+      
+      const title = movie?.Title ? `${movie.Title}` : "Job Listing";
+
       return (
-        <Layout title={title}>{Boolean(movie) && <JobDescription {...movie} />}</Layout>
+        <Layout title={title}>{Boolean(movie) && <JobDescription Title={""} Year={""} Rated={""} Released={""} Runtime={""} Genre={""} Director={""} Writer={""} Actors={""} Plot={""} Language={""} Country={""} Awards={""} Poster={""} Ratings={[]} Metascore={""} imdbRating={""} imdbVotes={""} imdbID={""} Type={""} DVD={""} BoxOffice={""} Production={""} Website={""} Response={""} {...movie} />}</Layout>
       );}
 
 
